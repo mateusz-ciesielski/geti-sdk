@@ -83,10 +83,11 @@ class HttpRequestAction(PostInferenceAction):
         """
         data = None
         if self.include_data:
-            prediction_dict = PredictionRESTConverter.to_dict(prediction)
+#            prediction_dict = PredictionRESTConverter.to_dict(prediction)
+            prediction_dict = prediction.__dict__
             data = prediction_dict
 
         requests.request(
-            method=self.method, url=self.url, headers=self.headers, data=data
+            method=self.method, url=self.url, headers=self.headers, json=data
         )
         self.log_function(f"HTTP {self.method} request send to `{self.url}`.")
