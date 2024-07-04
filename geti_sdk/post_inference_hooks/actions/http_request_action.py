@@ -83,8 +83,7 @@ class HttpRequestAction(PostInferenceAction):
         """
         data = None
         if self.include_data:
-#            prediction_dict = PredictionRESTConverter.to_dict(prediction)
-            prediction_dict = prediction.__dict__
+            prediction_dict = PredictionRESTConverter.to_dict(prediction)
             data = prediction_dict
 
         requests.request(
